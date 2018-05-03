@@ -1,7 +1,12 @@
 <?php
 
 class User extends CI_Controller {
-
+	//function auto run
+	function __construct(){
+		parent::__construct();
+		//load model
+		$this->load->model("user_m");
+    }
 
 	function index(){
 		$this->load->view("form_user_v");
@@ -9,9 +14,16 @@ class User extends CI_Controller {
 
 	function add() {
 		//create data array
-	echo $this->input->post("username") . "<br/>";
-	echo $this->input->post("password") . "<br/>";
-	echo $this->input->post("fullname") . "<br/>";
-	echo $this->input->post("level") . "<br/>";
+		$data = array(
+			"username" => $this->input->post("username"),
+			"password" => $this->input->post("password"),
+			"fullname" => $this->input->post("fullname"),
+			"level" => $this->input->post("level")
+			);
+
+		//check data before save
+		var_dump($data);
+		//save data to database
+		$this->user_m->add($data);
 	}
 }
