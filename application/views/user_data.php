@@ -12,6 +12,22 @@
 			<th>Level</th>
 			<th>Aksi</th>
 		</tr>
+
+		<?php
+			$nomor = 1;
+			foreach ($tbuser as $row) {
+				?>
+			<tr>
+				<td><?php echo $nomor++; ?></td>
+				<td><?php echo $row->username ?></td>
+				<td><?php echo $row->password ?></td>
+				<td><?php echo $row->level ?></td>
+				<td><a href="<?php echo base_url('index.php/User/del/'.$row->id)?>">Hapus</a> | Edit</td>
+			</tr>
+			<?php
+			}
+		?>
 	</table>
+
 </body>
 </html>

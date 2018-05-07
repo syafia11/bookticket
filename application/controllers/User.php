@@ -8,7 +8,7 @@ class User extends CI_Controller {
 		$this->load->model("user_m");
     }
 
-	function index(){
+	function form(){
 		$this->load->view("form_user_v");
 	}
 
@@ -25,5 +25,13 @@ class User extends CI_Controller {
 		var_dump($data);
 		//save data to database
 		$this->user_m->add($data);
+	}
+	function index(){
+		$data["tbuser"] = $this->user_m->gets();
+		$this->load->view("user_data", $data);
+	}
+	function del($id){
+		$this->user_m->del($id);
+		redirect("user");
 	}
 }

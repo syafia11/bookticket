@@ -1,15 +1,16 @@
 <?php
 
 class User_m extends CI_Model{
-	function gets(){}
-	function get(){}
-	/**
-	* $data param data array=>column, value
-	*/
+	function gets(){
+		return $this->db->get("user")->result();
+	}
+	function get($id){}
 	function add($data){
 		$this->db->insert("user",$data);
 	}
 
-	function edit(){}
-	function del(){}
+	function edit($id){}
+	function del($id){
+		$this->db->delete("user",["id"=>$id]);
+	}
 }
